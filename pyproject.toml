@@ -7,6 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+jupyter = "^1.0.0"
+pandas = "^2.2.2"
+chembl-downloader = "^0.4.5"
 
 
 [build-system]
