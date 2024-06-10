@@ -14,6 +14,9 @@ rdflib = "^7.0.0"
 python-dotenv = "^1.0.1"
 pandasai = "^2.1.1"
 weasel = "^0.4.1"
+langchain = "^0.2.3"
+langchain-community = "^0.2.4"
+langchain-openai = "^0.1.8"
 
 
 [build-system]
