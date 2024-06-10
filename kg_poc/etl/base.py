@@ -9,7 +9,7 @@ class BaseETL:
     """
     Base class for ETL operations. Subclasses should implement the transform method.
     """
-    _tables: Dict = []
+    _tables: Dict = {}
     _table_info: Dict = {}
 
     def __init__(
