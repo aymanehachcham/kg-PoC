@@ -17,7 +17,10 @@ class BaseETL:
             db_path: os.PathLike,
     ):
         if not os.path.exists(db_path):
-            raise FileNotFoundError(f"Database file not found at {db_path}")
+            logger.info("Database file does not exist. Creating a new database.")
+            with open(db_path, 'a') as f:
+                pass
+
         if not str(db_path).endswith('.db'):
             raise ValueError("Database file must be a SQLite database.")
 

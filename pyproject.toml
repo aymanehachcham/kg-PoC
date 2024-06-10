@@ -13,6 +13,7 @@ chembl-downloader = "^0.4.5"
 rdflib = "^7.0.0"
 python-dotenv = "^1.0.1"
 pandasai = "^2.1.1"
+weasel = "^0.4.1"
 
 
 [build-system]

@@ -23,8 +23,13 @@ class ChemblETL(BaseETL):
         Parameters:
         raw_data_path (os.PathLike): The path to the raw data directory.
         """
-        if not raw_data_path.endswith('.db'):
-            raise ValueError("The raw_data_path must be a SQLite database.")
+        if isinstance(raw_data_path, str):
+            if not raw_data_path.endswith('.db'):
+                raise ValueError("The raw_data_path must be a SQLite database.")
+
+        if not os.path.isdir(os.getenv("DB_PATH")):
+            logger.info("You need to download the Chembl database first.")
+            chembl_downloader.download_extract_sqlite()
 
         logger.info("Extracting data from Chembl database.")
         self.selected_tables = [
@@ -39,4 +44,4 @@ class ChemblETL(BaseETL):
         for table in self.selected_tables:
             logger.info(f"Transforming data for {table}...")
             sql = f"SELECT * FROM {table}"
-            self.tables[table] = chembl_downloader.query(sql)
+            self.tables[table.lower()] = chembl_downloader.query(sql)
