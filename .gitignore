@@ -154,7 +154,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-datasets/
+kg_poc/datasets/
 apache-jena-fuseki-5.0.0/
 
 # PyCharm
