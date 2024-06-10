@@ -1,0 +1,43 @@
+title: "ETL Pipeline"
+description: "ETL pipeline to ingest NPASS, NAEB and CHEMBL datasets into a database"
+# Variables can be referenced across the project.yml using ${vars.var_name}
+vars:
+  version: "0.0.1"
+  datasets_dir: "datasets"
+  database: "eb_data.db"
+  namespace: "http://kg.org/data/"
+
+# These are the directories that the project needs. The project CLI will make
+directories: ["scripts"]
+
+# Workflows are sequences of commands (see below) executed in order. You can
+# run them via "spacy project run [workflow]". If a commands's inputs/outputs
+# haven't changed, it won't be re-run.
+workflows:
+  all:
+    - run_naeb
+    - run_npass
+    - run_chembl
+    - convert_rdf
+
+# Project commands, specified in a style similar to CI config files (e.g. Azure pipelines).
+commands:
+  - name: run_naeb
+    help: "Launches the NAEB ETL pipeline"
+    script:
+      - "python scripts/run_naeb_etl.py ${vars.datasets_dir}/${vars.database} ${vars.datasets_dir}/naeb_dump"
+
+  - name: run_npass
+    help: "Launches the NPASS ETL pipeline"
+    script:
+      - "python scripts/run_npass_etl.py ${vars.datasets_dir}/${vars.database} ${vars.datasets_dir}/npass"
+
+  - name: run_chembl
+    help: "Launches the CHEMBL ETL pipeline"
+    script:
+      - "python scripts/run_chembl_etl.py ${vars.datasets_dir}/${vars.database} chembl_34.db"
+
+  - name: convert_rdf
+    help: "Launches the CHEMBL ETL pipeline"
+    script:
+      - "python scripts/convert_rdf_format.py ${vars.datasets_dir}/${vars.database} ${vars.namespace} ${vars.datasets_dir}/eb_data.rdf"

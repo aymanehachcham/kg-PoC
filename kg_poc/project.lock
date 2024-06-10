@@ -1,0 +1,25 @@
+run_naeb:
+  cmd: python -m weasel run run_naeb
+  script:
+    - python scripts/run_naeb_etl.py datasets/eb_data.db datasets/naeb_dump
+  deps: []
+  outs: []
+run_npass:
+  cmd: python -m weasel run run_npass
+  script:
+    - python scripts/run_npass_etl.py datasets/eb_data.db datasets/npass
+  deps: []
+  outs: []
+run_chembl:
+  cmd: python -m weasel run run_chembl
+  script:
+    - python scripts/run_chembl_etl.py datasets/eb_data.db chembl_34.db
+  deps: []
+  outs: []
+convert_rdf:
+  cmd: python -m weasel run convert_rdf
+  script:
+    - python scripts/convert_rdf_format.py datasets/eb_data.db http://kg.org/data/
+      datasets/eb_data.rdf
+  deps: []
+  outs: []
