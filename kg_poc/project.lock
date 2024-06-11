@@ -20,6 +20,6 @@ convert_rdf:
   cmd: python -m weasel run convert_rdf
   script:
     - python scripts/convert_rdf_format.py datasets/eb_data.db http://kg.org/data/
-      datasets/eb_data.rdf
+      datasets/eb_data_v1.rdf
   deps: []
   outs: []

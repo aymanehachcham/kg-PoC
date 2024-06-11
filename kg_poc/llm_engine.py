@@ -19,7 +19,7 @@ class NaturalLanguageQueryEngine:
 
         # Create the SQL Agent
         if llm is None:
-            llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key=os.getenv("OPENAI_API_KEY"))
+            llm = ChatOpenAI(model="gpt-4-turbo", temperature=0, api_key=os.getenv("OPENAI_API_KEY"))
         self.agent_executor = create_sql_agent(llm, db=self.db_lang, agent_type="openai-tools", verbose=True)
 
     def execute_query(self, natural_language_query):
