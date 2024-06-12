@@ -157,6 +157,7 @@ cython_debug/
 kg_poc/datasets/
 apache-jena-fuseki-5.0.0/
 .idea/
+.DS_Store
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can

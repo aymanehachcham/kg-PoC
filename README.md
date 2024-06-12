@@ -42,4 +42,7 @@ The ETL pipeline can either load data into a DB Store, or a Triple Store like Ap
   weasel run all
 ```
 
-You also have a playground with juypter notebooks to explore the integrity of the database in the main.ipynb file.
+## Usage
+
+- You also have a playground with juypter notebooks to explore the integrity of the database in the main.ipynb file.
+- The ``èntry.py`` file contains an entry point to test the ``NaturalLanguageQueryEngine`` that can query the SQL database with natural language queries.
