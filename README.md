@@ -6,6 +6,15 @@ The following datasets are ingested:
 - NPASS (Natural Product Activity and Species Source Database): Contains data on natural product molecules including their biological activities and source organisms.
 - ChEMBL: A large-scale bioactivity database for drug discovery, containing chemical, bioactivity, and genomic data.
 
+## Infrastructure
+
+The ETL pipeline is built using the Weasel framework, which is a lightweight framework that allows you to build pipelines using Python.
+The overall schema of the pipeline looks as follows:
+
+![image](images/kg_etl.png)
+
+The ETL pipeline can either load data into a DB Store, or a Triple Store like Apache Jena Fuseki. The pipeline is built in a way that it can be easily extended to support other databases.
+
 ## 🔧 Quick Install
 - Steps for usage:
 
