@@ -4,7 +4,7 @@ description: "ETL pipeline to ingest NPASS, NAEB and CHEMBL datasets into a data
 vars:
   version: "0.0.1"
   datasets_dir: "datasets"
-  database: "eb_data.db"
+  database: "eb_data_v1.db"
   namespace: "http://kg.org/data/"
 
 # These are the directories that the project needs. The project CLI will make
@@ -38,6 +38,6 @@ commands:
       - "python scripts/run_chembl_etl.py ${vars.datasets_dir}/${vars.database} chembl_34.db"
 
   - name: convert_rdf
-    help: "Launches the CHEMBL ETL pipeline"
+    help: "Converts the relational database to RDF format"
     script:
       - "python scripts/convert_rdf_format.py ${vars.datasets_dir}/${vars.database} ${vars.namespace} ${vars.datasets_dir}/eb_data.rdf"

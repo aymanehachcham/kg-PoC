@@ -45,3 +45,8 @@ class ChemblETL(BaseETL):
             logger.info(f"Transforming data for {table}...")
             sql = f"SELECT * FROM {table}"
             self.tables[table.lower()] = chembl_downloader.query(sql)
+            # remove duplicates
+            self.tables[table.lower()] = self.tables[table.lower()].drop_duplicates()
+            # remove NaN values
+            self.tables[table.lower()] = self.tables[table.lower()].dropna()
+

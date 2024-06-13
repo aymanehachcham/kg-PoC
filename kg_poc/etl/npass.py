@@ -39,6 +39,10 @@ class NPASSETL(BaseETL):
         natural_product = natural_product.drop_duplicates()
         compound = compound.drop_duplicates()
 
+        target = target.dropna()
+        natural_product = natural_product.dropna()
+        compound = compound.dropna()
+
         self.tables = {
             'target': target,
             'natural_product': natural_product,

@@ -56,6 +56,14 @@ class NAEBETL(BaseETL):
         sources = sources.drop(columns=['fulltext', 'address', 'school'])
         sources = sources.rename(columns={'id': 'source_id'})
 
+        usage = usage.drop_duplicates()
+        species = species.drop_duplicates()
+        sources = sources.drop_duplicates()
+
+        usage = usage.dropna()
+        species = species.dropna()
+        sources = sources.dropna()
+
         self.tables = {
             'usage': usage,
             'species': species,
